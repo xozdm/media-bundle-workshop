@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Application\Sonata\MediaBundle\Entity\Media;
 
 /**
  * @ORM\Table(name="blog_posts")
@@ -26,6 +27,14 @@ class BlogPost
      * @ORM\Column(name="title", type="string")
      */
     private $title;
+
+    /**
+     * @var Media
+     *
+     * @ORM\ManyToOne(targetEntity="App\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     * @ORM\JoinColumn(name="file", referencedColumnName="id")
+     */
+    private $file;
 
     /**
      * @return int
@@ -60,6 +69,24 @@ class BlogPost
     public function setTitle(string $title): BlogPost
     {
         $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return Media
+     */
+    public function getFile(): ?Media
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param Media $file
+     * @return BlogPost
+     */
+    public function setFile(Media $file): BlogPost
+    {
+        $this->file = $file;
         return $this;
     }
 }
