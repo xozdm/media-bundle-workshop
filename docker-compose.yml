@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   php-fpm:
-    #user: "${UID-www-data}:${GID-www-data}"
+    user: "${UID-www-data}:${GID-www-data}"
     image: exozet/php-fpm:7.2-sudo
     env_file:
       - ./.docker/common.env
@@ -27,7 +27,7 @@ services:
       - ./.docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./.docker/nginx/conf.d/app.conf:/etc/nginx/conf.d/default.conf
   mysql:
-    image: mysql:5.6.35
+    image: mysql:5.7.30
     env_file:
       - ./.docker/common.env
       - ./.env
