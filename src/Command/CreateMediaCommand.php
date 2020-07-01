@@ -36,7 +36,7 @@ class CreateMediaCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $media = new Media();
-        $media->setBinaryContent('var/workshop_demo.jpg');
+        $media->setBinaryContent('fixtures/workshop_demo.jpg');
         $media->setContext('workshop');
         $media->setProviderName('sonata.media.provider.image');
 
