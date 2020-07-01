@@ -1,5 +1,6 @@
 <h1>Blog page</h1>
 <div><strong>Title:</strong> {{ blogPost.title }}</div>
 <div><strong>File:</strong> {% thumbnail blogPost.file, 'big' with {'class': 'workshop-thumbnail', 'style': 'border: 10px solid red'} %}</div>
+<div><strong>Preview url:</strong> {% path blogPost.file, 'big' %}</div>
 
 
