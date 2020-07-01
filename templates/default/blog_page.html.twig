@@ -1,5 +1,5 @@
 <h1>Blog page</h1>
 <div><strong>Title:</strong> {{ blogPost.title }}</div>
-<div><strong>File:</strong> {{ blogPost.file }}</div>
+<div><strong>File:</strong> {% thumbnail blogPost.file, 'small' %}</div>
 
 
