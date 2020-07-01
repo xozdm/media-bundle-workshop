@@ -13,6 +13,13 @@ sonata_media:
             formats:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
+        workshop:
+            providers:
+                - sonata.media.provider.image
+
+            formats:
+                small: { width: 400 , quality: 90}
+                big:   { width: 1440 , quality: 90}
 
     cdn:
         server:
