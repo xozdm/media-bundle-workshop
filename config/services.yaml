@@ -34,3 +34,7 @@ services:
         arguments: [~, App\Entity\BlogPost, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Workshop, label: Blog post }
+
+    App\Command\CreateMediaCommand:
+        arguments:
+            - '@sonata.media.manager.media'
