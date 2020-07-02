@@ -38,3 +38,21 @@ services:
     App\Command\CreateMediaCommand:
         arguments:
             - '@sonata.media.manager.media'
+
+    sonata.media.provider.custom_image:
+        class: App\Provider\CustomImageProvider
+        arguments:
+            - 'sonata.media.provider.custom_image'
+            - '@sonata.media.filesystem.local'
+            - '@sonata.media.cdn.server'
+            - '@sonata.media.generator.default'
+            - '@sonata.media.thumbnail.format'
+            - [gif, jpeg, jpg, png, eps, tif, tiff]
+            - [image/gif, image/x-gif, image/jpeg, image/x-jpeg, image/png, image/x-png, application/postscript, application/x-postscript, image/x-pam, image/x-ept, image/x-eps, image/tiff, image/x-tiff, image/tif, image/x-tif]
+            - '@sonata.media.adapter.image.imagick'
+            - '@sonata.media.metadata.proxy'
+        tags:
+            - { name: sonata.media.provider }
+        calls:
+            - [setResizer, ['@sonata.media.resizer.simple']]
+            - [setTemplates, [{helper_thumbnail: 'SonataMediaBundle:Provider:thumbnail.html.twig', helper_view: 'SonataMediaBundle:Provider:view_file.html.twig'}]]
