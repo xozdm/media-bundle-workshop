@@ -20,12 +20,6 @@ doctrine:
         entity_managers:
             default:
                 mappings:
-                    App:
-                        is_bundle: false
-                        type: annotation
-                        dir: '%kernel.project_dir%/src/Entity'
-                        prefix: 'App\Entity'
-                        alias: App
                     ApplicationSonataMediaBundle: ~
                     SonataMediaBundle: ~
         auto_generate_proxy_classes: true
