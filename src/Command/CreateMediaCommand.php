@@ -38,7 +38,7 @@ class CreateMediaCommand extends Command
         $media = new Media();
         $media->setBinaryContent('fixtures/workshop_demo_2.jpg');
         $media->setContext('workshop');
-        $media->setProviderName('sonata.media.provider.image');
+        $media->setProviderName('sonata.media.provider.custom_image');
         $media->setMetadataValue('title', 'Amazing picture');
 
         $this->mediaManager->save($media);

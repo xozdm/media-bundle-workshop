@@ -43,7 +43,7 @@ services:
         class: App\Provider\CustomImageProvider
         arguments:
             - 'sonata.media.provider.custom_image'
-            - '@sonata.media.filesystem.local'
+            - '@app.filesystem.ftp'
             - '@sonata.media.cdn.server'
             - '@sonata.media.generator.default'
             - '@sonata.media.thumbnail.format'
@@ -56,3 +56,15 @@ services:
         calls:
             - [setResizer, ['@sonata.media.resizer.simple']]
             - [setTemplates, [{helper_thumbnail: 'SonataMediaBundle:Provider:thumbnail.html.twig', helper_view: 'SonataMediaBundle:Provider:view_file.html.twig'}]]
+
+    app.ftp_adapter:
+       class: Gaufrette\Adapter\Ftp
+       arguments:
+           - '/test'
+           - '157.230.97.104'
+           - {'username': 'vsftp', 'password': 'w68UAQ2B6vJShSv3', 'passive': true}
+
+    app.filesystem.ftp:
+       class: Gaufrette\Filesystem
+       arguments:
+           - '@app.ftp_adapter'
